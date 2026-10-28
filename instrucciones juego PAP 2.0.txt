@@ -1,0 +1,267 @@
+A continuación redacto en como consistirá el juego:
+
+Notas del Juego: 
+Este juego estará basado en el popular juego arcade de Super Mario Bros, por consiguiente, el estilo de sus mapas, niveles y resolución estará fuertemente inspirado en él, , ESTO SIGNIFICA QUE TODO MATERIAL SERÁ CON LA TEMATICA O ESTILO RETRO, (pixelado) El juego se llamará "The_Legend_of_trigonomus" y Constará de una pantalla de inicio, y 3 niveles los cuales al ser superados mostrará la pantalla de fin de juego y procederá a regresar a la pantalla de inicio.
+
+El usuario escogerá un personaje y al iniciar el primer nivel tendrá 3 vidas, cargadas en la variable "lives" interna del juego, esta podrá ser modificada dependiendo a los eventos que se enfrente el mismo (como recompensas o que pierda un desafío), cuando el usuario pierda las 3 vidas se mostrará un fondo negro, con letras blancas (texto centrado) que diga "GAME OVER" y procederá a regresar a la pantalla de inicio. Asimismo al inicio de cada nuevo nivel tendrá 3min para superar el mismo, ("180" segundos en la variable "time"), este tendrá un comportamiento regresivo (se le restará siempre "1" segundo a la variable "time", cada segundo que pase el personaje en el nivel), y el mismo podrá se modificado por cualquier evento en el juego (ejemplo, que gane un desafío y que gane 60 segundos mas de tiempo), Cuando el contador llegue a cero (variable "time" = "0"), se mostrará un fondo negro, con letras blancas (texto centrado) que diga "GAME OVER" y procederá a regresar a la pantalla de inicio.
+
+Asimismo este juego estará construido en JavaScript (entorno Web con HTML5 Canvas, CSS y Web Audio API), y por ese motivo antes de iniciar el juego en la pantalla de inicio, se mostrará un texto pequeño centrado, ubicado en el borde superior de la pantalla que diga "Para reproducir sonido por favor toque la pantalla o pulse una tecla", de este modo se podrá inicializar toda la música y efectos de sonido propios del juego.
+
+
+El juego se dividirá en varias fases y sus sub-fases:
+1.La pantalla de Inicio:
+
+Definición General: La pantalla consistirá en el titulo de juego en grande posicionado en el borde superior, y a la derecha de la pantalla se mostrará los personajes a seleccionar (ya sea) "Pitágoras-Cara Derecha.png", "Hugo polanco-Cara Derecha.png", "Albert Einstein-Cara Derecha.png". Y a la Izquierda con un botón grande con el icono de una flecha "-> y "que dice "Jugar", Y en los bordes estarán posicionados los botones (iconos), de "Configuración" (botón de engranaje "⚙️"), de "Ayuda"  (botón de interrogación "❔") y botón de créditos (icono de medalla "🥇").
+	
+	1.1.Cuadro de configuración: (volumen del juego): Al pulsar este icono saldrá una cuadro flotante con estilo arcade donde se podrá mover el volumen interno del 	juego (ya sea con las flechas del ordenador o pulsando directamente la barra de volumen). Esta configuración controlará el nivel del volumen interno del juego.
+
+	1.2.Cuadro de Ayuda: (mapa de controles de juego):Al pulsar este icono saldrá una cuadro flotante con estilo arcade donde se mostrará el siguiente texto 	centrado: "Gracias por jugar este juego, el mismo consiste en una aventura de plataformas retro en 2D donde pondrás a prueba tus conocimientos matemáticos para superar tres niveles (Grecia, Ciudad y Desierto). Tu objetivo es alcanzar la meta de cada escenario antes de que el contador de 3 minutos llegue a cero, administrando cuidadosamente tus 3 vidas iniciales.   Se juega utilizando los controles de movimiento para desplazarte (izquierda, derecha) y saltar por el relieve del mapa. Si chocas con un obstáculo fijo o móvil, el avance se detendrá y deberás responder correctamente a una pregunta de geometría o trigonometría para que se te permita el paso; si contestas de forma incorrecta, perderás una vida. También puedes saltar para golpear los cuadros flotantes de habilidad desde abajo y resolver retos opcionales, los cuales te recompensarán con ventajas estratégicas como inmunidad temporal, tiempo extra o vidas adicionales.".
+
+	1.3.Cuadro de créditos: (desarrolladores del juego): Al pulsar este icono saldrá una cuadro flotante con estilo arcade donde se mostrará el siguiente texto 	centrado: "Gracias por jugar nuestro juego, somos el Grupo E, Sección Z1, del grupo PAP segundo semestre 2026, nuestros autores son: 
+---Judá Isaac Burgos Córdova-Nov: 2025045862, 
+Allan José Ovalle Aceituno-Nov: 2026000007, 
+Daniela Giselle Gómez García-Nov: 2025047038, 
+Sofía Alejandra Bernardino Diéguez-Nov: 2026000295"---
+
+2.Personajes y mecánicas de juego: 
+
+Descripción General: Aquí se presentan los distintos personajes que el usuario podrá escoger y jugar (este juego es diseñado para 1 solo jugador/personaje activo)
+
+	2.1 Personajes:
+
+		1. "Pitágoras":  Funciones:
+		Portada (a seleccionar en el menú inicio): "Pitágoras-Cara Derecha.png", 
+		Derecha (al mover el personaje a la derecha) "Pitágoras-Cara Derecha.png",
+		Izquierda (al mover al personaje a la izquierda): "Pitágoras-Cara Izquierda.png" ,
+		Saltar (cuando el personaje salte) animar (subir la imagen vigente (ya sea derecha o izquierda) por el doble de pixeles de altura) el 				desplazamiento del personaje,  después de 0.3s de haber subido, crear un desplazamiento inverso para regresar al suelo. (utiliza una mecánica de física 		de gravedad suave (o una parábola de 0.5s a 0.6s en total) que alcance exactamente el doble de píxeles de altura del sprite.)
+
+
+
+		2. "Ing. Hugo Polanco": Portada (a seleccionar en el menú inicio): "Hugo polanco-Cara Derecha.png", 
+		Derecha (al mover el personaje a la derecha) "Hugo polanco-Cara Derecha.png",
+		Izquierda (al mover al personaje a la izquierda): "Hugo polanco-Cara Izquierda.png" ,
+		Saltar (cuando el personaje salte) animar (levantar la imagen vigente (ya sea derecha o izquierda) por el doble de pixeles de altura) el 			desplazamiento del personaje,  después de 0.3s de haber subido, crear un desplazamiento inverso para regresar al suelo. (utiliza una mecánica de física 		de gravedad suave (o una parábola de 0.5s a 0.6s en total) que alcance exactamente el doble de píxeles de altura del sprite.)
+
+
+
+
+		3. "albert einstein": Portada (a seleccionar en el menú inicio): "Albert Einstein-Cara Derecha.png", 
+		Derecha (al mover el personaje a la derecha) "Albert Einstein-Cara Derecha.png",
+		Izquierda (al mover al personaje a la izquierda): "Albert Einstein-Cara Izquierda.png" ,
+		Saltar (cuando el personaje salte) animar (subir la imagen vigente (ya sea derecha o izquierda) por el doble de pixeles de altura) el 				desplazamiento del personaje, después de 0.3s de haber subido, crear un desplazamiento inverso para regresar al suelo. (utiliza una mecánica de física 		de gravedad suave (o una parábola de 0.5s a 0.6s en total) que alcance exactamente el doble de píxeles de altura del sprite.)
+
+
+
+
+	2.2 Mecánicas de Juego:
+	Descripción General: Aquí se presentan las mecánicas internas del personaje como sus complementos, son los siguientes:
+
+	
+	2.3 Mecánicas del personaje (Universal)
+	Descripción General: Estos consistirán en todos las animaciones que tendrá el personaje así como sus distintas facetas en cada uno de los escenarios 	siguientes:
+	
+		2.3.1 Movimiento del personaje: El personaje tendrá 3 movimientos básicos: moverse a la derecha, moverse a la izquierda, Saltar hacia arriba (solo 		hasta el doble de pixeles de su altura), los cuales el usuario siempre podrá ejercer a menos que este en un obstáculo o habilidad, en dicho caso se le 		negará todo movimiento al usuario hasta haber completado dicho evento (ya sea que gane o pierda).
+		
+		2.3.2 Movimiento y seguimiento de cámara: La cámara seguirá al personaje en todo momento, con un rango de enfoque amplio, esto significa que la cámara 		mostrará ampliamente el escenario de juego, siempre y cuando no exceda los bordes del nivel (similar al juego super Mario Bros, copia su dinámica, 		estilo y funcionamiento)
+
+		2.3.3 Colisiones vs salto: Estas aplican en varios casos cuales son:
+			-El obstáculo fijo (obstaculo_del_mapa.png): Actúa como una barrera vertical (no se puede saltar por encima a menos que tenga activa la 			habilidad de Inmunidad).
+			-El obstáculo móvil (obstaculo_movible.png): Sí puede esquivarse saltando por encima de él, activando la pregunta únicamente si el jugador 			choca contra su hitbox sin inmunidad.
+			-El cuadro de habilidad (IMG_0672.png) flota a una altura media y se activa al golpearlo mediante un salto (al estilo de los bloques ? de 			Mario) o al hacer clic sobre él.
+		
+		2.3.4 Físicas de Relieve, Plataformas y Rebote (Estilo Super Mario Bros):
+		El escenario no será únicamente un suelo plano, sino que contará con relieve interactivo generado sobre el lienzo (Canvas) tomando como referencia 		estética y visual las imágenes del nivel (sin necesidad de ser una réplica exacta píxel por píxel, sino una adaptación funcional y jugable). Este 		relieve funcionará bajo las siguientes reglas físicas:
+			- Suelo base y elevaciones: Existirá un suelo firme continuo y secciones con desniveles o escalones sólidos sobre los cuales el personaje podrá 			caminar y subir saltando.
+
+			- Plataformas y bloques flotantes: Habrán filas de bloques estilo ladrillo/piedra suspendidos a distintas alturas (alcanzables con el salto de 			doble altura del personaje). El jugador podrá subirse encima de ellos para caminar, usarlos como puente para esquivar los 6 obstáculos móviles 			("obstaculo_movible.png") o alcanzar zonas más altas.
+
+			- Colisión direccional (Sistema AABB):
+				* Desde arriba (Aterrizaje): Si el personaje cae sobre un bloque, plataforma, pilar o escalón, sus pies se apoyarán sólidamente sobre 				la superficie y podrá volver a saltar desde ahí.
+
+				* Desde abajo (Golpe de bloque): Si el personaje salta debajo de una plataforma sólida normal, esta detendrá su ascenso y lo hará caer. 				Si golpea desde abajo un Cuadro de Habilidad ("IMG_0672.png"), el bloque hará una breve animación de rebote vertical y activará el 				cuadro flotante de pregunta.
+
+				* Lateral (Izquierda / Derecha): Los pilares, muros bajos y escalones bloquearán el paso horizontal hasta que el jugador salte por 				encima de ellos.
+			- Bloques de rebote (Trampolines/Resortes): En puntos estratégicos antes de plataformas muy altas, habrán bloques especiales de rebote 				(identificados con un color distintivo retro) que, al ser pisados por el jugador, lo impulsarán automáticamente a 1.5 veces su altura normal de 			salto.
+
+			- Meta de final de nivel: Al extremo derecho de cada nivel (aproximadamente a 3,500 píxeles del inicio), habrá una estructura de meta (como un 			estandarte/bandera o portal arcade) que al ser tocada por el jugador dará por superado el nivel, sumará +1 a "Progress" y reproducirá el sonido 			de victoria.
+
+	2.4 Preguntas en Obstáculos y Habilidades:
+ 	Descripción General: Estas serán las preguntas que aparecerán en los distintos cuadros flotantes en los distintos obstáculos y habilidades, estarán en texto 	plano centrado conforme al cuadro y abajo de cada pregunta, se dejará un espacio para que el usuario escriba la respuesta, y en caso de ser opción múltiple se 	presentarán las respuestas a escoger en tipo viñeta y al seleccionar una (o escribir una respuesta), se habilitará un botón ubicado en el borde inferior de 	dicho cuadro flotante con el texto centrado "Responder", y al ser presionado se procederá a comparar la respuesta ingresada del usuario, con la respuesta 	predeterminada, y de ser correcta se procederá como debe, y si es incorrecta también se procederá a ejecutar lo aclarado en cada caso especifico.
+
+	Ahora bien con el caso de aleatorización se abarcarán las preguntas en 3 Grupos, (Geometría, Trigonometría y Ambos), y se aleatorizarán las 	preguntas/respuestas 	solo en cada grupo, junto con sus respuestas respectivas, a continuación los presento:
+	
+		2.4.1 Grupo Geometría:
+			Pregunta A:
+			¿Cómo se llama el polígono regular que tiene exactamente 5 lados?
+			Respuesta (Texto): "pentágono"
+			Nota al desarrollador (úsalo según te sea conveniente):	En la lógica de JavaScript para las cajas de texto que flotan sobre el <canvas>, 			utiliza el método .toLowerCase() y una función para omitir tildes sobre el input del jugador, garantizando que variaciones como "Pentagono" o 			"pentágono" sumen correctamente.
+		
+			Pregunta B:
+			¿Cuál es el valor numérico en grados de un ángulo recto?	
+			Respuesta (Texto): "90"
+
+			Pregunta C:
+			¿Cuál es la fórmula para calcular el área de un círculo con radio "r"?
+			Respuesta (de opción múltiple): Opción "C"
+			Opciones a mostrar: ( A,"(A) π * r"), (B,"(B) 2 * π * r"), (C,"(C) π * r²"), (D,"(D) π * d")
+		
+			Pregunta D:
+			En un triángulo rectángulo, ¿Cuál es la relación correcta entre la hipotenusa (c) y los catetos (a y b)?
+			Respuesta (de opción múltiple): Opción "A"
+			Opciones a mostrar: ( A,"(A) c² = a² + b²"), (B,"(B) c = a + b"), (C,"(C) c² = a² - b²"), (D,"(D) c = a * b")
+			Nota al desarrollador (úsalo según te sea conveniente): Utiliza c&sup2; = a&sup2; + b&sup2; en el arreglo (array) de preguntas del juego.	
+
+		2.4.2 Grupo Trigonometría:
+			Pregunta A:
+			¿Qué razón trigonométrica se obtiene al dividir el cateto opuesto sobre la hipotenusa?
+			Respuesta (Texto): "seno"
+		
+			Pregunta B:
+			¿A cuántos grados sexagesimales equivale un ángulo de π radianes?	
+			Respuesta (Texto): "180"
+
+			Pregunta C:
+			¿Cuál de las siguientes es la identidad trigonométrica fundamental (identidad pitagórica)?
+			Respuesta (de opción múltiple): Opción "A"
+			Opciones a mostrar: ( A,"(A) sen²(x) + cos²(x) =1"), (B,"(B) sen(x) + cos(x) = 1"), (C,"(C) sen²(x) - cos²(x) = 1"), (D,"(D) tan(x) = cos(x) / sen(x)")
+			Nota al desarrollador (úsalo según te sea conveniente): Renderiza la opción correcta en el modal HTML de las viñetas utilizando sen&sup2;(x) + 			cos&sup2;(x) = 1
+		
+			Pregunta D:
+			¿Cuál es el valor numérico exacto de la tangente de 45 grados (tan 45°)?
+			Respuesta (de opción múltiple): Opción B"
+			Opciones a mostrar: ( A,"(A) 0"), (B,"(B) 1"), (C,"(C) ∞"), (D,"(D) -1")
+			Nota al desarrollador (úsalo según te sea conveniente): Utiliza la entidad &deg; para el símbolo de grados (45°) y &infin; para representar el 			infinito (∞) de forma nativa en tu interfaz.
+
+
+
+
+		2.4.3 Grupo Ambos:
+		Este tendrá la combinación de los 2 grupos anteriores: (Grupo Geometría y Grupo Trigonometría).
+
+		
+
+	2.5 Desafíos o "Obstáculos":
+	Descripción General: Aquí se presentan los diferentes obstáculos, los cuales serán un desafío para el jugador, estos se dividen en 2:
+
+	2.4.1 Obstáculo del mapa (fijo): Imagen: "obstaculo_del_mapa.png":
+	Ubicación: en la mitad de cada nivel, siempre apoyado en el suelo del mapa(dibújalo donde haga espacio, y donde no se miré fuera de lugar ( donde no se mire 		roto o extraño, por ejemplo encima de una pared)).
+
+	Funcionamiento: El jugador al pasar el él se le impedirá el paso y procederá a abrir un cuadro estilo retro flotante el cual tendrá una pregunta (he incluirá 		una figura de ser necesario) sujeto a las directrices "2.4 Preguntas en Obstáculos y Habilidades" vigentes, donde el usuario escribirá la respuesta 		correcta (aunque también puede ser de opciones múltiple) y de ser contestada correctamente se procederá a permitir el paso al usuario y también se dará 		un aviso (cuadro temporal con duración de 3s) con el texto "Desafío Superado", De no haber contestado correctamente, se le restará una vida (-1 en la 		variable "lives") y se 	procederá dar un aviso (cuadro temporal con duración de 3s) con el texto "Respuesta incorrecta- Se le restará una vida" y se le 		permitirá el paso de dicho punto al jugador. 
+
+	2.5.2 Obstáculo movible (con movimiento autónomo): Imagen: "obstaculo_movible.png":
+	Ubicación: habrán varios en cada nivel, introduce 6 en cada nivel estratégicamente dentro del mapa (nivel), siempre y cuando las condiciones lo permitan (donde 		no se mire roto o extraño, por ejemplo encima de una pared)).
+
+	Funcionamiento: Estos consistirán a unos pequeños personajes movibles (similares a los "Goombas" de Super mario bros), que se moverán de un lado a otro siempre 		y cuando el mapa lo permita, El jugador al tocarlo (al personaje) se le impedirá el paso y procederá a abrir un cuadro estilo retro flotante el cual 		tendrá una pregunta (he incluirá una figura de ser necesario) sujeto a las directrices "2.4 Preguntas en Obstáculos y Habilidades" vigentes, donde el 		usuario escribirá la respuesta correcta (aunque también puede ser de opciones múltiples, dependiendo de la pregunta) y de ser contestada correctamente 		se procederá a permitir el paso al usuario y también se dará un aviso (cuadro temporal con duración de 3s) con el texto "Desafío Superado", De no haber 		contestado correctamente, se le restará una vida (-1 en la variable "lives") y se procederá dar un aviso (cuadro temporal con duración de 3s) con el 		texto "Respuesta incorrecta- Se le restará una vida" y se le permitirá el paso de dicho punto al jugador., De no haber contacto directo (obstáculo 		movible) con el jugador, no se realizará ningún desafío.
+
+
+	2.6 Habilidades o Recompensas:
+	Descripción General: Aquí se presentan son 3:
+
+		1.1-Brindar "inmunidad" de cualquier obstáculo al personaje (puede pasar libremente sin superarlos) por un periodo de 10s. (al ser aplicado se dará un 		aviso de que se tiene inmunidad por 10 segundos y aparecerá un recuadro ubicado en el centro del borde superior con la cuenta regresiva de 10 segundos, 		agotado el tiempo se eliminará el recuadro y el personaje perderá dicha habilidad).
+
+		1.2-Brindar "1 vida extra" el cual consistirá de agregar a la variable de "lives" un +1 para que si el personaje falla en un obstáculo tenga una vida 		extra con el cual superar obstáculos, (al ser aplicado la habilidad aparecerá un recuadro temporal (duración 3s) donde se indica,
+		 "haz ganado 1 vida extra", el 	cual se sumará la variable "lives" un "1" que se verá reflejado instantáneamente juego ).
+
+		1.3-Brindar "2 minutos extra de tiempo", este consistirá en sumar a la variable "time" "120" segundos mas (al ser aplicado la habilidad aparecerá, un 		recuadro temporal (duración 3s) donde se indica, "haz ganado 120s extra de tiempo", el cual se sumará la variable "time" un "120" y se verá reflejado 		instantáneamente en el juego).
+
+
+	2.7 Sountrack:
+	Descripción General: Este apartado es muy importante, por lo que no te olvides de ello, a continuación especificaré cada soundtrack a usar en cada evento relaciónalos a los distintos eventos dentro del juego, utiliza un mezclador de audio que integre varias pistas cuando sea necesario, además de integrar un controlador de volumen general, que podrá se controlado desde configuración:
+
+		2.6.1 Eventos:
+			-Pantalla de inicio: "slimeyfox-582346.mp3"
+			-Pantalla "Créditos" (tanto en configuración como en el final del juego): "ssstik.io.mp3"
+			-Sountrack (Nivel "Grecia"): "arcade-beat.mp3"
+			-Sountrack (Nivel "Ciudad"): "heart.mp3"
+			-Sountrack (Nivel "Desierto"): "8-bit-music.mp3"
+			-Superación de desafío/habilidad: "ltz88bg8ju_NWM.mp3"
+			-Respuesta incorrecta en desafío/obstáculo/habilidad: "feedback-incorrect-24_NWM.mp3"
+			-Game Over (cuando ya no tenga vidas el jugador): "csy3tfy6v_NWM.mp3"	
+		
+
+3.Sistema aleatorio interno:
+
+Definición General: Este será un sistema interno que no será visible al jugador, y cuya función será "aleatorizar" los 3 niveles que se dividirá el juego, además de "aleatorizar" los diferentes obstáculos que tendrá cada nivel, con la condición que NUNCA se podrá repetir ningún nivel,  Ni ningún obstáculo del mismo, esto con el fin de que cada partida sea única y entretenida para el usuario.
+También se usará esta función para la selección de preguntas en los desafíos o Obstáculos (Dentro de su subgrupo que va acorde a su nivel) y para las preguntas de cuadros de habilidad o recompensas. (ten en cuenta que cada pregunta tendrá su respectiva respuesta programa juntamente, y esto será una "pareja", junta a aleatorizar, esto con el objetivo de coherencia en las preguntas y respuestas que debe superar el jugador)
+
+
+
+4.Los niveles
+
+Definición General: Estos se dividirán en 3, los no contarán con un orden especifico por la función de "aleatorizar" descrita antes, los mismos tendrán un formato 2D, con las condiciones descritas antes (estilo mario bros de izquierda a derecha), tendrán "obstáculos" y cubos de habilidades (con un pequeño desafío o pregunta matemática) que de ser completado el personaje vigente tendrá una bonificación o recompensa (descritos a continuación) cuando se finalicé se reproducirá un sonido de victoria y se pasará al siguiente nivel sujeto al sistema aleatorio interno, además cada vez que el jugador superé un nivel, se sumará a la variable "Progress" un "1" con el objetivo de terminar el juego.
+
+	4.1.Nivel "Grecia" (Grupo Geometría): En este nivel tendrá el fondo 2D "IMG_0659.JPG" el cual se irá replicando con el movimiento del jugador al estilo de 	super Mario bros descrita antes, el mismo tendrá obstáculos, que serán puestos aleatoriamente en el transcurso del nivel, y asimismo se integrará		"IMG_0672.png" que será el cuadro de habilidad que al pulsarlo se abrirá una ventana flotante donde se brindará una pregunta o problema matemático simple, la 	respuesta será 	ingresada en el teclado y de ser contestada correctamente se procederá a aplicar una habilidad o ventaja al personaje las cuales podrán se una 	de estas: "Inmunidad" o "1 vida extra" o "2 minutos extra de tiempo".
+	
+	4.1.1 Distribución del relieve del nivel (Nivel "Grecia"): Nota para el desarrollador/agente: Toma la estética clásica del fondo "IMG_0659.JPG" y las imágenes 	de referencia como guía visual e inspiración (no debe ser exactamente idéntico, sino funcional y armónico en estilo pixel-art).
+	
+	- Estilo visual de los bloques: Plataformas con textura o colores de mármol blanco/crema, bloques de piedra antigua y pilares griegos bajos (que cumplen la 	función de las clásicas tuberías de Super Mario Bros).
+
+	- Estructura del recorrido (Izquierda a Derecha):
+		1. Tramo inicial: Suelo plano con las primeras plataformas bajas de mármol flotando a media altura y el primer cuadro de habilidad ("IMG_0672.png") 		accesible mediante un salto simple, acompañado de los primeros obstáculos móviles patrullando en la parte baja.
+		
+		2. Tramo medio (Zona del Obstáculo Fijo): Escalinatas ascendentes y descendentes tipo templo griego, seguidas de un tramo despejado en el suelo donde 		se ubicará el obstáculo fijo ("obstaculo_del_mapa.png") a mitad del nivel, garantizando que no quede superpuesto sobre ningún pilar o bloque.
+		
+		3. Tramo final: Plataformas flotantes escalonadas a doble altura (con al menos un bloque de rebote para alcanzar un cuadro de habilidad elevado) y 		pilares bajos entre los cuales patrullarán los obstáculos móviles restantes hasta llegar al altar/meta final del nivel.
+
+	4.2.Nivel "Ciudad" (Grupo Trigonometría): En este nivel tendrá el fondo 2D "IMG_0664.JPG" el cual se irá replicando con el movimiento del jugador al estilo de 	super Mario bros descrita antes, el mismo tendrá obstáculos, que serán puestos aleatoriamente en el transcurso del nivel, y asimismo se integrará 
+	"IMG_0672.png" que será el cuadro de habilidad que al pulsarlo se abrirá una ventana flotante donde se brindará una pregunta o problema matemático simple, 	la respuesta será ingresada en el teclado y de ser contestada correctamente se procederá a aplicar una habilidad o ventaja al personaje las cuales podrán se 	una de estas: "Inmunidad" o "1 vida extra" o "2 minutos extra de tiempo".
+
+	4.2.1 Distribución del relieve del nivel (Nivel "Ciudad"): Nota para el desarrollador/agente: Toma la estética urbana del fondo "IMG_0664.JPG" y las imágenes 	de referencia como guía visual e inspiración (no debe ser exactamente idéntico, sino funcional y armónico en estilo pixel-art).
+	
+	- Estilo visual de los bloques: Plataformas con aspecto de ladrillo urbano, vigas metálicas retro, contenedores/cajas sólidas para escalar y trampolines 	urbanos de rebote.
+	
+	- Estructura del recorrido (Izquierda a Derecha):
+		1. Tramo inicial: Acera principal con plataformas flotantes tipo andamio o ladrillo a distintas alturas, permitiendo al jugador saltar de plataforma en 		plataforma por encima de los primeros obstáculos móviles ("obstaculo_movible.png").
+		
+		2. Tramo medio (Zona del Obstáculo Fijo): Bloques escalonados y vigas suspendidas con un cuadro de habilidad ("IMG_0672.png") en la parte superior; al 		bajar al nivel del asfalto (en una zona completamente plana y despejada a mitad del mapa), se encontrará el obstáculo fijo ("obstaculo_del_mapa.png").
+		
+		3. Tramo final: Secuencia rítmica de cajas sólidas a modo de obstáculos bajos (que obligan a saltar), plataformas aéreas en dos niveles con bloques de 		rebote y patrullas de obstáculos móviles en los callejones inferiores hasta alcanzar la meta del nivel.
+
+
+	4.3.Nivel "Desierto" (Grupo Ambos): En este nivel tendrá el fondo 2D "IMG_0670.JPG" el cual se irá replicando con el movimiento del jugador al estilo de super 	Mario bros descrita antes, el mismo tendrá obstáculos, que serán puestos aleatoriamente en el transcurso del nivel, y asimismo se integrará "IMG_0672.png" 	que será el cuadro de habilidad que al pulsarlo se abrirá una ventana flotante donde se brindará una pregunta o problema matemático simple, la respuesta será 	ingresada en el teclado y de ser contestada correctamente se procederá a aplicar una habilidad o ventaja al personaje las cuales podrán se una de estas: 	"Inmunidad" o "1 vida extra" o "2 minutos extra de tiempo".
+		
+	4.3.1 Distribución del relieve del nivel (Nivel "Desierto"): Nota para el desarrollador/agente: Toma la estética árida del fondo "IMG_0670.JPG" y las imágenes 	de referencia como guía visual e inspiración (no debe ser exactamente idéntico, sino funcional y armónico en estilo pixel-art).
+	
+	- Estilo visual de los bloques: Bloques de piedra arenisca dorada/ocre, estructuras escalonadas tipo pirámide (similares a las escaleras de bloques del final 	de los niveles de Super Mario Bros) y pilares de ruinas del desierto.
+	
+	- Estructura del recorrido (Izquierda a Derecha):
+		1. Tramo inicial: Terreno desértico con plataformas flotantes de arenisca y pequeños muros de ruinas donde rebotan y cambian de dirección los 			obstáculos móviles ("obstaculo_movible.png").
+		
+		2. Tramo medio (Zona del Obstáculo Fijo): Una estructura piramidal escalonada (subida y bajada de bloques) con un cuadro de habilidad ("IMG_0672.png") 		suspendido sobre la cima, seguida de una explanada limpia en el suelo donde se ubicará el obstáculo fijo ("obstaculo_del_mapa.png").
+		
+		3. Tramo final: Combinación de plataformas aéreas a distintas alturas con bloques de rebote, pilares de piedra que acotan el movimiento de los últimos 		obstáculos móviles y una gran escalinata piramidal final que conduce a la meta del nivel.
+
+5.Pantalla de despedida (fin del juego)
+Solo cuando el jugador haya completado los 3 niveles (la variable "Progress" tenga un valor de "3") ya no se escogerá otro nivel y se procederá a sacar el cuadro de fin del juego al usuario.
+
+Este estará consistido en una pantalla con la sumatoria de los fondos de todos los niveles (3) y con unas letras grandes en medio (texto centrado) que diga "¡Felicidades!, Completaste nuestro Juego, Espero que lo hayas disfrutado" Además de los Créditos y nombres de los autores del juego, (texto centrado ubicado en el borde inferior debajo del titulo principal) con el texto "Créditos: 
+---Creado por: Judá Isaac Burgos Córdova-Nov: 2025045862, 
+Allan José Ovalle Aceituno-Nov: 2026000007, 
+Daniela Giselle Gómez García-Nov: 2025047038, 
+Sofía Alejandra Bernardino Diéguez-Nov: 2026000295"---"
+
+Después de 60 Segundos de estar esta ventana se quitará automáticamente (o al detectar cualquier pulsación del teclado por parte del usuario) y se procederá a regresar a la pantalla de inicio.
+
+6.Guia de ubicaciones de archivos:
+
+Archivo: "obstaculo_movible.png"---Ruta: "proyect_creative_The_Legend_of_trigonomus/Mapas/Obstáculos/obstaculo_movible.png"   
+Archivo: "obstaculo_del_mapa.png"--Ruta: "proyect_creative_The_Legend_of_trigonomus/Mapas/Obstáculos/obstaculo_del_mapa.png"   
+Archivo: "IMG_0672.png"---Ruta: "proyect_creative_The_Legend_of_trigonomus/Mapas/Cuadro de habilidades/IMG_0672.png"   
+Archivo: "IMG_0659.JPG"---Ruta: "proyect_creative_The_Legend_of_trigonomus/Mapas/Nivel-Grecia/IMG_0659.JPG"   
+Archivo: "IMG_0664.JPG"---Ruta: "proyect_creative_The_Legend_of_trigonomus/Mapas/Nivel-Ciudad/IMG_0664.JPG"  
+Archivo: "IMG_0670.JPG"---Ruta: "proyect_creative_The_Legend_of_trigonomus/Mapas/Nivel-Desierto/IMG_0670.JPG"   
+Archivo: "csy3tfy6v_NWM.mp3"---Ruta: "proyect_creative_The_Legend_of_trigonomus/Música/Sonido de game over/csy3tfy6v_NWM.mp3"   
+Archivo: "ssstik.io.mp3"---Ruta: "proyect_creative_The_Legend_of_trigonomus/Música/Creditos/ssstik.io.mp3" 
+Archivo: "slimeyfox-582346.mp3"---Ruta: "proyect_creative_The_Legend_of_trigonomus/Música/Sonido de inicio de juego/slimeyfox-582346.mp3"   
+Archivo: "ltz88bg8ju_NWM.mp3"---Ruta: "proyect_creative_The_Legend_of_trigonomus/Música/Sonido de victoria/ltz88bg8ju_NWM.mp3"   
+Archivo: "feedback-incorrect-24_NWM.mp3"---Ruta: "proyect_creative_The_Legend_of_trigonomus/Música/sonido respuesta incorrecta/feedback-incorrect-24_NWM.mp3"      
+Archivo: "arcade-beat.mp3"---Ruta: "proyect_creative_The_Legend_of_trigonomus/Música/Soundtrack/arcade-beat.mp3"
+Archivo: "heart.mp3"---Ruta: "proyect_creative_The_Legend_of_trigonomus/Música/Soundtrack/heart.mp3"   
+Archivo: "8-bit-music.mp3"---Ruta: "proyect_creative_The_Legend_of_trigonomus/Música/Soundtrack/8-bit-music.mp3"  
+Archivo: "Pitágoras-Cara Derecha.png"---Ruta: "proyect_creative_The_Legend_of_trigonomus/Personajes/Pitágoras/Pitágoras-Cara Derecha.png"
+Archivo: "Pitágoras-Cara Izquierda.png"---Ruta: "proyect_creative_The_Legend_of_trigonomus/Personajes/Pitágoras/Pitágoras-Cara Izquierda.png"
+Archivo: "Hugo polanco-Cara Derecha.png"---Ruta: "proyect_creative_The_Legend_of_trigonomus/Personajes/Hugo polanco/Hugo polanco-Cara Derecha.png"
+Archivo: "Hugo polanco-Cara Izquierda.png"---Ruta: "proyect_creative_The_Legend_of_trigonomus/Personajes/Hugo polanco/Hugo polanco-Cara Izquierda.png"
+Archivo: "Albert Einstein-Cara Derecha.png"---Ruta: "proyect_creative_The_Legend_of_trigonomus/Personajes/Albert Einstein/Albert Einstein-Cara Derecha.png"
+Archivo: "Albert Einstein-Cara Izquierda.png"---Ruta: "proyect_creative_The_Legend_of_trigonomus/Personajes/Albert Einstein/Albert Einstein-Cara Izquierda.png"
+
